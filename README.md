@@ -69,9 +69,9 @@ Console output gives a plain-English summary. A detailed `audit_log_<timestamp>.
 
 ## Real findings from building this
 
-Building this surfaced several genuine, non-obvious issues — documented here because working through them was as valuable as the code itself:
+Building this surfaced several genuine, non-obvious issues that are documented here because working through them was as valuable as the code itself:
 
-1. **`Get-ComputerInfo` reported the wrong OS entirely.** On a confirmed clean install of Windows 11 23H2, this cmdlet reported "Windows 10 Pro" and an unrelated version label ("2009"). Switched to reading directly from the registry (`HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion`), which is what Windows Settings itself uses — more reliable, though even this registry value still literally stores `ProductName: Windows 10 Pro` on this machine, a known long-standing Microsoft inconsistency rather than a bug in this code.
+1. **`Get-ComputerInfo` reported the wrong OS entirely.** On a confirmed clean install of Windows 11 23H2, this cmdlet reported "Windows 10 Pro" and an unrelated version label ("2009"). Switched to reading directly from the registry (`HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion`), which is what Windows Settings itself uses, more reliable, though even this registry value still literally stores `ProductName: Windows 10 Pro` on this machine, a known long-standing Microsoft inconsistency rather than a bug in this code.
 
 2. **`Get-HotFix` under-reports installed updates.** It only surfaced updates through a certain date, while the actual Windows Update history (visible in Settings) showed real updates installed weeks later — meaning `Get-HotFix` misses certain update types (e.g. some .NET and cumulative updates). Flagged as a known limitation; a more complete implementation would also read the Windows Update log directly.
 
