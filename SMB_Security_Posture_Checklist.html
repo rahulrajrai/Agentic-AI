@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SMB Security Posture Checklist — NIST CSF 2.0 Aligned</title>
+<style>
+  body { font-family: 'Segoe UI', Arial, sans-serif; margin: 40px; color: #1a1a1a; }
+  h1 { font-size: 22px; margin-bottom: 4px; }
+  .subtitle { color: #555; font-size: 13px; margin-bottom: 24px; }
+  .meta-box { border: 1px solid #ccc; padding: 12px 16px; margin-bottom: 24px; font-size: 13px; background: #fafafa; }
+  .meta-box div { margin-bottom: 4px; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 28px; font-size: 12.5px; }
+  th, td { border: 1px solid #ccc; padding: 6px 8px; text-align: left; vertical-align: top; }
+  th { background: #2b3a55; color: white; font-weight: 600; }
+  tr:nth-child(even) { background: #f7f8fa; }
+  .func-header td { background: #dbe3f0; font-weight: 700; font-size: 13px; padding: 8px; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 11px; font-weight: 600; }
+  .automated { background: #d4edda; color: #1e7e34; }
+  .planned { background: #fff3cd; color: #856404; }
+  .manual { background: #e2e3e5; color: #383d41; }
+  .verify-col { width: 90px; text-align: center; }
+  .checkbox { width: 16px; height: 16px; border: 1.5px solid #555; display: inline-block; }
+  .signoff { margin-top: 30px; font-size: 13px; }
+  .signoff .line { display: inline-block; border-bottom: 1px solid #333; width: 260px; margin: 0 10px; }
+  .footer-note { font-size: 11px; color: #777; margin-top: 30px; border-top: 1px solid #ddd; padding-top: 10px; }
+  @media print {
+    body { margin: 15mm; }
+    .no-print { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<h1>SMB Security Posture Checklist</h1>
+<div class="subtitle">Aligned to NIST Cybersecurity Framework (CSF) 2.0 — 42 Controls</div>
+
+<div class="meta-box">
+  <div><strong>Organization Assessed:</strong> ______________________________</div>
+  <div><strong>Date of Assessment:</strong> ______________________________</div>
+  <div><strong>Assessed By:</strong> ______________________________</div>
+  <div><strong>Automated Scan Reference / Report ID:</strong> ______________________________</div>
+</div>
+
+<p style="font-size:13px; margin-bottom:20px;">
+  This checklist is used to manually verify that the automated agent pipeline correctly evaluated each control below,
+  and to record findings for controls that require human judgment. The <strong>Type</strong> column indicates whether
+  a control is checked automatically by the scanning agents, is planned for future automation, or inherently requires
+  manual review (e.g. policy or governance questions that cannot be verified by scanning a system).
+</p>
+
+<div id="table-container"></div>
+
+<div class="signoff">
+  Verified complete and accurate by: <span class="line"></span> &nbsp; Signature: <span class="line"></span> &nbsp; Date: <span class="line"></span>
+</div>
+
+<div class="footer-note">
+  Generated as part of the Agentic SMB Security Posture project. Control set adapted from NIST Cybersecurity Framework (CSF) 2.0.
+  This checklist is provided for internal review and demonstration purposes and does not constitute a certified compliance audit.
+</div>
+
+<script>
+const controls = [{"id": "GV-01", "function": "Govern", "category": "Organizational Context", "description": "Business objectives and stakeholders are identified and documented", "check_type": "manual"}, {"id": "GV-02", "function": "Govern", "category": "Risk Management Strategy", "description": "Risk tolerance and appetite are defined", "check_type": "manual"}, {"id": "GV-03", "function": "Govern", "category": "Roles & Responsibilities", "description": "Cybersecurity roles and responsibilities are assigned", "check_type": "manual"}, {"id": "GV-04", "function": "Govern", "category": "Policy", "description": "An information security policy exists and is communicated", "check_type": "manual"}, {"id": "GV-05", "function": "Govern", "category": "Oversight", "description": "Cybersecurity risk is reviewed by leadership on a regular basis", "check_type": "manual"}, {"id": "GV-06", "function": "Govern", "category": "Supply Chain", "description": "Third-party vendors and software supply chain risks are assessed", "check_type": "manual"}, {"id": "GV-07", "function": "Govern", "category": "Compliance", "description": "Legal and regulatory requirements are identified and tracked", "check_type": "manual"}, {"id": "ID-01", "function": "Identify", "category": "Asset Management", "description": "Physical devices and systems on the network are inventoried", "check_type": "automated"}, {"id": "ID-02", "function": "Identify", "category": "Asset Management", "description": "Software and applications installed are inventoried", "check_type": "planned"}, {"id": "ID-03", "function": "Identify", "category": "Asset Management", "description": "Operating system versions and build numbers are identified", "check_type": "automated"}, {"id": "ID-04", "function": "Identify", "category": "Risk Assessment", "description": "Known vulnerabilities on identified assets are cataloged", "check_type": "planned"}, {"id": "ID-05", "function": "Identify", "category": "Risk Assessment", "description": "Patch/update status is assessed against vendor release cadence", "check_type": "automated"}, {"id": "ID-06", "function": "Identify", "category": "Business Environment", "description": "Critical business functions dependent on IT systems are documented", "check_type": "manual"}, {"id": "ID-07", "function": "Identify", "category": "Governance", "description": "Data classification (what's sensitive vs not) is defined", "check_type": "manual"}, {"id": "PR-01", "function": "Protect", "category": "Access Control", "description": "User accounts follow least-privilege principles", "check_type": "planned"}, {"id": "PR-02", "function": "Protect", "category": "Access Control", "description": "Multi-factor authentication is enabled on admin/critical accounts", "check_type": "planned"}, {"id": "PR-03", "function": "Protect", "category": "Data Security", "description": "Sensitive data at rest is encrypted", "check_type": "planned"}, {"id": "PR-04", "function": "Protect", "category": "Data Security", "description": "Data in transit is encrypted (HTTPS/TLS enforced)", "check_type": "planned"}, {"id": "PR-05", "function": "Protect", "category": "Platform Security", "description": "Host-based firewall is enabled on all endpoints", "check_type": "automated"}, {"id": "PR-06", "function": "Protect", "category": "Platform Security", "description": "Operating systems are patched within a defined SLA (e.g. 30 days)", "check_type": "automated"}, {"id": "PR-07", "function": "Protect", "category": "Platform Security", "description": "Antivirus/endpoint protection is installed and active", "check_type": "planned"}, {"id": "PR-08", "function": "Protect", "category": "Maintenance", "description": "Remote maintenance access is logged and controlled", "check_type": "manual"}, {"id": "PR-09", "function": "Protect", "category": "Awareness & Training", "description": "Staff receive periodic security awareness training", "check_type": "manual"}, {"id": "PR-10", "function": "Protect", "category": "Network Security", "description": "Network segmentation separates critical systems from general traffic", "check_type": "manual"}, {"id": "PR-11", "function": "Protect", "category": "Backup", "description": "Regular backups are performed and tested for restoration", "check_type": "manual"}, {"id": "PR-12", "function": "Protect", "category": "Physical Security", "description": "Physical access to servers/network equipment is restricted", "check_type": "manual"}, {"id": "DE-01", "function": "Detect", "category": "Anomaly Detection", "description": "Unusual login attempts or access patterns are monitored", "check_type": "planned"}, {"id": "DE-02", "function": "Detect", "category": "Continuous Monitoring", "description": "Network traffic is monitored for known malicious indicators", "check_type": "planned"}, {"id": "DE-03", "function": "Detect", "category": "Continuous Monitoring", "description": "New/unauthorized devices joining the network are flagged", "check_type": "automated"}, {"id": "DE-04", "function": "Detect", "category": "Logging", "description": "Security-relevant events are logged centrally", "check_type": "planned"}, {"id": "DE-05", "function": "Detect", "category": "Vulnerability Scanning", "description": "Systems are periodically scanned for missing patches", "check_type": "automated"}, {"id": "DE-06", "function": "Detect", "category": "Detection Processes", "description": "Detection processes are tested periodically", "check_type": "manual"}, {"id": "DE-07", "function": "Detect", "category": "Firewall Rule Review", "description": "Firewall rules are reviewed for overly permissive configurations", "check_type": "planned"}, {"id": "RS-01", "function": "Respond", "category": "Response Planning", "description": "An incident response plan exists", "check_type": "manual"}, {"id": "RS-02", "function": "Respond", "category": "Communications", "description": "Roles for internal/external incident communication are defined", "check_type": "manual"}, {"id": "RS-03", "function": "Respond", "category": "Analysis", "description": "Incidents are investigated and root cause is documented", "check_type": "manual"}, {"id": "RS-04", "function": "Respond", "category": "Mitigation", "description": "Compromised systems can be isolated quickly", "check_type": "manual"}, {"id": "RS-05", "function": "Respond", "category": "Improvements", "description": "Lessons learned from incidents update future response plans", "check_type": "manual"}, {"id": "RS-06", "function": "Respond", "category": "Reporting", "description": "Regulatory breach notification requirements are known and actionable", "check_type": "manual"}, {"id": "RC-01", "function": "Recover", "category": "Recovery Planning", "description": "A disaster recovery plan exists and is documented", "check_type": "manual"}, {"id": "RC-02", "function": "Recover", "category": "Improvements", "description": "Recovery plans are updated based on lessons learned", "check_type": "manual"}, {"id": "RC-03", "function": "Recover", "category": "Communications", "description": "Recovery activities are communicated to stakeholders", "check_type": "manual"}];
+
+const functionOrder = ["Govern", "Identify", "Protect", "Detect", "Respond", "Recover"];
+const functionNames = {
+  "Govern": "GOVERN (GV)",
+  "Identify": "IDENTIFY (ID)",
+  "Protect": "PROTECT (PR)",
+  "Detect": "DETECT (DE)",
+  "Respond": "RESPOND (RS)",
+  "Recover": "RECOVER (RC)"
+};
+
+let html = `<table>
+  <thead>
+    <tr>
+      <th style="width:60px;">ID</th>
+      <th style="width:140px;">Category</th>
+      <th>Description</th>
+      <th style="width:100px;">Type</th>
+      <th class="verify-col">Manually Verified</th>
+    </tr>
+  </thead>
+  <tbody>`;
+
+functionOrder.forEach(fn => {
+  const items = controls.filter(c => c.function === fn);
+  if (items.length === 0) return;
+  html += `<tr class="func-header"><td colspan="5">${functionNames[fn]}</td></tr>`;
+  items.forEach(c => {
+    const badgeClass = c.check_type;
+    const badgeLabel = c.check_type.charAt(0).toUpperCase() + c.check_type.slice(1);
+    html += `<tr>
+      <td>${c.id}</td>
+      <td>${c.category}</td>
+      <td>${c.description}</td>
+      <td><span class="badge ${badgeClass}">${badgeLabel}</span></td>
+      <td class="verify-col"><span class="checkbox"></span></td>
+    </tr>`;
+  });
+});
+
+html += `</tbody></table>`;
+document.getElementById('table-container').innerHTML = html;
+</script>
+
+</body>
+</html>
